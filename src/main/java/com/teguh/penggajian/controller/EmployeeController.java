@@ -1,6 +1,7 @@
 package com.teguh.penggajian.controller;
 
 import com.teguh.penggajian.model.*;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -15,12 +16,12 @@ public class EmployeeController {
 
     @RestController
 
-    @RequestMapping("/hitungpajak")
+
     public static class ProductController {
 
-        @GetMapping()
-        public Pegawai getPegawai() {
-            Pegawai pegawai = new Pegawai(1,"Teguh Susanto",Gender.Lelaki,StatusPernikahan.Nikah,1,Negara.Indonesia);
+        @PostMapping("/hitungpajak")
+        public ResponseEntity<Response> getPegawai() {
+            /**Pegawai pegawai = new Pegawai(1,"Teguh Susanto",Gender.Lelaki,StatusPernikahan.Nikah,1,Negara.Indonesia);
 
             List<Gaji> gaji = new ArrayList<>();
             gaji.add(new Gaji(pegawai,NamaGaji.Gaji_Pokok,TypeGaji.Earning, 20000000L));
@@ -28,8 +29,9 @@ public class EmployeeController {
             gaji.add(new Gaji(pegawai,NamaGaji.Tunjangan_Uang_Makan,TypeGaji.Earning,5000000L));
             gaji.add(new Gaji(pegawai,NamaGaji.Pajak,TypeGaji.Deduction,0L));
             gaji.add(new Gaji(pegawai,NamaGaji.BPJS_Ksehatan,TypeGaji.Deduction,500000L));
-            pegawai.setKomponen_gaji(gaji);
-            return pegawai;
+            pegawai.setKomponen_gaji(gaji); **/
+            //return pegawai;
+            return ResponseEntity.ok(new Response());
         }
         @GetMapping("/attendance")
         public List<PegawaiAtt> getAttendance() {
