@@ -4,6 +4,7 @@ import com.teguh.penggajian.model.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -21,17 +22,21 @@ public class EmployeeController {
 
         @PostMapping("/hitungpajak")
         public ResponseEntity<Response> getPegawai() {
-            /**Pegawai pegawai = new Pegawai(1,"Teguh Susanto",Gender.Lelaki,StatusPernikahan.Nikah,1,Negara.Indonesia);
+            Pegawai pegawai = new Pegawai("Teguh Susanto",Gender.MALE,StatusPernikahan.NikahPlusAnak,1,Negara.Indonesia);
+            BigDecimal basic_salary = new BigDecimal(25500000);
+            BigDecimal transport = new BigDecimal(2000000);
+            BigDecimal meal = new BigDecimal(3000000);
+            BigDecimal insurance = new BigDecimal(500000);
+            System.out.print(pegawai.getMarital_status());
+            BigDecimal pph = new FormulaPajak().getPPH(pegawai,basic_salary,transport,meal,insurance);
 
-            List<Gaji> gaji = new ArrayList<>();
-            gaji.add(new Gaji(pegawai,NamaGaji.Gaji_Pokok,TypeGaji.Earning, 20000000L));
-            gaji.add(new Gaji(pegawai,NamaGaji.Tunjangan_Transport,TypeGaji.Earning,5000000L));
-            gaji.add(new Gaji(pegawai,NamaGaji.Tunjangan_Uang_Makan,TypeGaji.Earning,5000000L));
-            gaji.add(new Gaji(pegawai,NamaGaji.Pajak,TypeGaji.Deduction,0L));
-            gaji.add(new Gaji(pegawai,NamaGaji.BPJS_Ksehatan,TypeGaji.Deduction,500000L));
-            pegawai.setKomponen_gaji(gaji); **/
-            //return pegawai;
-            return ResponseEntity.ok(new Response());
+            List<Gaji> gaji = new ArrayList<Gaji>();
+            gaji.add(new Gaji(NamaGaji.Gaji_Pokok,TypeGaji.Earning, basic_salary));
+            gaji.add(new Gaji(NamaGaji.Tunjangan_Transport,TypeGaji.Earning,transport));
+            gaji.add(new Gaji(NamaGaji.Tunjangan_Uang_Makan,TypeGaji.Earning,meal));
+            gaji.add(new Gaji(NamaGaji.Pajak,TypeGaji.Deduction,pph));
+            gaji.add(new Gaji(NamaGaji.BPJS_Ksehatan,TypeGaji.Deduction,insurance));
+            return ResponseEntity.ok(new Response(pegawai,gaji));
         }
         @GetMapping("/attendance")
         public List<PegawaiAtt> getAttendance() {

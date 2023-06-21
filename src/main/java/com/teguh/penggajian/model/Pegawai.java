@@ -1,98 +1,63 @@
 package com.teguh.penggajian.model;
 
-import java.util.List;
-
 public class Pegawai {
-    private int id;
-    private String nama;
-    private Gender gender;
-    private StatusPernikahan status_nikah;
-    private int anak;
-    private Negara negara;
-    private Long pendapatan=0L;
-    private Long asuransi=0L;
-    private List<Gaji> komponen_gaji;
+    private String name;
+    private Gender sex;
+    private StatusPernikahan marital_status;
+    private int children;
+    private Negara country;
 
 
 
-    public Pegawai(int id,String nama,Gender gender,StatusPernikahan status_nikah,int anak,Negara negara) {
-        this.setId(id);
-        this.setNama(nama);
-        this.setGender(gender);
-        this.setStatus_nikah(status_nikah);
-        this.setNegara(negara);
-        this.setAnak(anak);
+    public Pegawai(String name,Gender sex,StatusPernikahan marital_status,int children,Negara country) {
+        this.setName(name);
+        this.setSex(sex);
+        this.setMarital_status(marital_status);
+        this.setChildren(children);
+        this.setCountry(country);
     }
 
-    public StatusPernikahan getStatus_nikah() {
-        return status_nikah;
+    public String getName() {
+        return name;
     }
 
-    public void setStatus_nikah(StatusPernikahan status_nikah) {
-        this.status_nikah = status_nikah;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
+    public void setSex(Gender sex) {
+        this.sex = sex;
     }
 
-    public Gender getGender() {
-        return gender;
+    public Gender getSex() {
+        return sex;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public StatusPernikahan getMarital_status(StatusPernikahan marital_status) {
+        return this.marital_status;
     }
 
-    public int getId() {
-        return id;
+    public void setMarital_status(StatusPernikahan marital_status) {
+        this.marital_status = marital_status;
     }
 
-    public String getNama() {
-        return nama;
+    public int getChildren() {
+        return children;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
+    public StatusPernikahan getMarital_status() {
+        return marital_status;
     }
 
-    public void setAnak(int anak) {
-        this.anak = anak;
+    public Negara getCountry() {
+        return country;
     }
 
-    public int getAnak() {
-        return anak;
+    public void setChildren(int children) {
+        this.children = children;
     }
 
-    public Negara getNegara() {
-        return negara;
-    }
-
-    public void setNegara(Negara negara) {
-        this.negara = negara;
-    }
-
-    public void setKomponen_gaji(List<Gaji> komponen_gaji) {
-        this.komponen_gaji = komponen_gaji;
-    }
-
-    public Long getPendapatan() {
-        return pendapatan;
-    }
-
-    public void setPendapatan(Long pendapatan) {
-        this.pendapatan = pendapatan;
-    }
-
-    public Long getAsuransi() {
-        return asuransi;
-    }
-
-    public void setAsuransi(Long asuransi) {
-        this.asuransi = asuransi;
-    }
-
-    public List<Gaji> getKomponen_gaji() {
-        return komponen_gaji;
+    public void setCountry(Negara country) {
+        this.country = country;
     }
 }
